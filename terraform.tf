@@ -7,7 +7,7 @@ terraform {
     hostname = "app.terraform.io"
 
     workspaces {
-      project = "ait-kiu"
+      project = "ati-kiu"
       tags = ["challenge"]
     }
   }
