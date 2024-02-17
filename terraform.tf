@@ -2,12 +2,17 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
-
   cloud {
+    organization = "Home-DevOps"
+    hostname = "app.terraform.io"
+
     workspaces {
-      name = "Home-DevOps"
+      project = "ait-kiu"
+      tags = ["challenge"]
     }
   }
+
+
 
   required_providers {
     aws = {
