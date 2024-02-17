@@ -8,7 +8,7 @@ terraform {
 
     workspaces {
       project = "ati-kiu"
-      tags = ["challenge"]
+      tags = ["ati-kiu"]
     }
   }
 
