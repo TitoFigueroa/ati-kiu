@@ -3,11 +3,11 @@
 
 terraform {
 
-/*   cloud {
+  cloud {
     workspaces {
       name = "Home-DevOps"
     }
-  } */
+  }
 
   required_providers {
     aws = {
