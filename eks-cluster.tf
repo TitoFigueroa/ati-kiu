@@ -68,7 +68,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-kiu-challenge-1"
+      name = "node-group-kiu-1"
 
       instance_types = ["t3.small"]
 
@@ -78,7 +78,7 @@ module "eks" {
     }
 
     two = {
-      name = "node-group-kiu-challenge-2"
+      name = "node-group-kiu-2"
 
       instance_types = ["t3.small"]
 
