@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kiu-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kiu-app
+  template:
+    metadata:
+      labels:
+        app: kiu-app
+    spec:
+      containers:
+      - name: kiu-app
+        image: your-docker-registry/your-app-image:latest  # replace with your Docker registry and image
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiu-app-service
+spec:
+  selector:
+    app: kiu-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer  # or use NodePort as needed
