@@ -1,0 +1,26 @@
+{
+  "name": "kiu-app",
+  "version": "1.0.0",
+  "description": "kis app to execute a job challenge for devops engineer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TitoFigueroa/ati-kiu.git"
+  },
+  "author": "Jorge Figueroa",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/TitoFigueroa/ati-kiu/issues"
+  },
+  "homepage": "https://github.com/TitoFigueroa/ati-kiu#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "https": "^1.0.0",
+    "mysql": "^2.18.1"
+  }
+}

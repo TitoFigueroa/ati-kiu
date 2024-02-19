@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kiu-app
+  namespace: dev
+spec:
+  replicas: 1 #For development just, update for production required based on performance tests
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kiu-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kiu-app
+    spec:
+      containers:
+      - image: private.ecr.aws/kiu-app:latest # Update here the right ECR registry url
+        imagePullPolicy: Always
+        name: kiu-app
+        ports:
+        - containerPort: 3000
+      resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: kiu-app-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: kiu-app
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: dev
+  name: kiu-app-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kiu-app-service
+              port:
+                number: 80

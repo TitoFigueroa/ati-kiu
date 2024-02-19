@@ -1,0 +1,8 @@
+USE mydatabase;
+
+CREATE TABLE app_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    input_text VARCHAR(255) NOT NULL,
+    datetime_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+    execution_status VARCHAR(50) DEFAULT 'Success'
+);
