@@ -23,15 +23,15 @@
 
 # Full flow steps:
 
-## 1 - INFRASTRUCTURE CREATION: Create infrastructure based on terraform files inside ["infrastructure"](https://github.com/TitoFigueroa/ati-kiu/blob/infrastructure) folder, this step relays on a previously Terraform Cloud workspace creation and integrated with GitHub. After pushing the code to the configured branch (in this case main), infra will be planned, and mnually approved the apply.
+## 1 - INFRASTRUCTURE CREATION: Create infrastructure based on terraform files inside ["infrastructure"](https://github.com/TitoFigueroa/ati-kiu/main/infrastructure) folder, this step relays on a previously Terraform Cloud workspace creation and integrated with GitHub. After pushing the code to the configured branch (in this case main), infra will be planned, and mnually approved the apply.
 
-## 2 - APP-BUILD: Build docker image, and push it to the ECR container registry, this will allow the eks deployment, find the right docker container to run. Find the Dockerfile under [devops/docker](https://github.com/TitoFigueroa/ati-kiu/blob/devops/docker) folder. (Inside this folder you will see a compose file, its to help developers test the code locally with a docker based mysql database). At root repository level, code app is available inside the [app](https://https://github.com/TitoFigueroa/ati-kiu/blob/app) folder.
+## 2 - APP-BUILD: Build docker image, and push it to the ECR container registry, this will allow the eks deployment, find the right docker container to run. Find the Dockerfile under [devops/docker](https://github.com/TitoFigueroa/ati-kiu/main/devops/docker) folder. (Inside this folder you will see a compose file, its to help developers test the code locally with a docker based mysql database). At root repository level, code app is available inside the [app](https://https://github.com/TitoFigueroa/ati-kiu/main/app) folder.
 
-## 3 - DATABASE CONFIGURATION: Connect to the database via Bastion host cause the database is under a private subnet, OR deploy a small app insie the EKS that executes the connection and model database creation script. No matter which method you select, the model script is under the [database-model](https://https://github.com/TitoFigueroa/ati-kiu/blob/database-model) folder.
+## 3 - DATABASE CONFIGURATION: Connect to the database via Bastion host cause the database is under a private subnet, OR deploy a small app insie the EKS that executes the connection and model database creation script. No matter which method you select, the model script is under the [database-model](https://https://github.com/TitoFigueroa/ati-kiu/main/database-model) folder.
 
-## 4 - EKS CONFIGURATION: Once the infrastructure is created completed and correctly, follow the steps under the [devops/deployment-docs](https://https://github.com/TitoFigueroa/ati-kiu/blob/devops/deployment-docs) folder, this are a mark down files, that resumes all the steps requires to configure EKS allowing use add-ons that will be super useful to deploy public apps via loadbalancer
+## 4 - EKS CONFIGURATION: Once the infrastructure is created completed and correctly, follow the steps under the [devops/deployment-docs](https://https://github.com/TitoFigueroa/ati-kiu/main/devops/deployment-docs) folder, this are a mark down files, that resumes all the steps requires to configure EKS allowing use add-ons that will be super useful to deploy public apps via loadbalancer
 
-## 5 - APP DEPLOYMENT: Last but not least step, deploying the app with required objects to make alive the app inside the EKS cluster. Execute in the indicated order the eksctl commands to deploy each manifest correctly, look under the [devops/k8s](https://https://github.com/TitoFigueroa/ati-kiu/blob/devops/k8s) folder to move forward deploying this app.
+## 5 - APP DEPLOYMENT: Last but not least step, deploying the app with required objects to make alive the app inside the EKS cluster. Execute in the indicated order the eksctl commands to deploy each manifest correctly, look under the [devops/k8s](https://https://github.com/TitoFigueroa/ati-kiu/main/devops/k8s) folder to move forward deploying this app.
 
 
 
