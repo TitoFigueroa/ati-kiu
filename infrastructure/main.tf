@@ -92,6 +92,15 @@ module "vpc_endpoints" {
     tags = local.db_tags
 }
 
+resource "aws_db_subnet_group" "kiu-db-subnet-group" {
+  name       = "kiu-db-subnet-group"
+  subnet_ids = module.vpc.private_subnets
+
+  tags = {
+    Name = "kiu database subnet group"
+  }
+}
+
 ################################################################################
 # ECR Module
 ################################################################################
