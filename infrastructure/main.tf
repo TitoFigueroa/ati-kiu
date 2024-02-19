@@ -92,8 +92,8 @@ module "vpc_endpoints" {
     tags = local.db_tags
 }
 
-resource "aws_db_subnet_group" "kiu-db-subnet-group" {
-  name       = "kiu-db-subnet-group"
+resource "aws_db_subnet_group" "kiu-db-infrastructure" {
+  name       = "kiu-db-infrastructure"
   subnet_ids = module.vpc.private_subnets
 
   tags = {
@@ -234,7 +234,7 @@ module "aurora" {
     }
 
     vpc_id               = module.vpc.vpc_id
-    db_subnet_group_name = module.vpc.database_subnet_group_name
+    db_subnet_group_name = aws_db_subnet_group.kiu-db-infrastructure.name
     security_group_rules = {
     vpc_ingress = {
         cidr_blocks = module.vpc.private_subnets_cidr_blocks
